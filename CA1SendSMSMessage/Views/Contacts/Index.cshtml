@@ -1,0 +1,73 @@
+﻿
+@model IEnumerable<CA1SendSMSMessage.Models.Person>
+
+@{
+    ViewBag.Title = "Contacts";
+}
+
+
+<br>
+<br>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title">Your Contacts</h1>
+    </div>
+
+    <div class="panel-body">
+
+        @using (Html.BeginForm())
+        {
+
+            <table class="table table-bordered" id="ContactsTable" border="1" cellpadding="10" cellspacing="10">
+                <thead class="thead-inverse">
+                    <tr>
+                        @* obtaining a title for each piece of information as per the Person.cs Model *@
+                        <th>
+                            @Html.DisplayNameFor(m => m.AreaCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Surname)
+                        </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in @Model)
+                {
+                    @* Iterates through each value in the Person.cs model and prints their value *@
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.AreaCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Surname)
+                        </td>
+                        <td valign="middle">
+                            @* returns the key information in a query URL when the Action Link is clicked *@
+                            @Html.ActionLink("Send Message", "Index", "SMSMessage", new { AreaCode = item.AreaCode, PhoneNumber = item.PhoneNumber }, new { @class = "btn btn-success" })
+
+                        </td>
+
+                    </tr>
+                }
+
+
+            </table>
+
+        }
+    </div>
+
+</div>

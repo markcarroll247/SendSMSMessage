@@ -1,0 +1,49 @@
+﻿@model CA1SendSMSMessage.Models.SMSMessage
+
+
+
+@{
+    ViewBag.Title = "Success";
+}
+
+
+<br>
+<br>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title">Message Sent</h1>
+    </div>
+
+    <div class="panel-body">
+        <table id="SuccessTable" border="1" cellpadding="10" cellspacing="10">
+
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    @* ViewBag.Contact holds the name and surname of the succesfully sent message *@
+                    @ViewBag.Contact
+                </td>
+            </tr>
+
+
+            <tr>
+                @* Using the model, it obtains its name and then  assigns the value passed to the Text Content as entered by the user *@
+                <td>
+                    @Html.DisplayNameFor(m => m.TextContent)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.TextContent)
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<br>
+
+@* button back to the SMSMessage Index *@
+@Html.ActionLink("Send another message", "Index", "SMSMessage")

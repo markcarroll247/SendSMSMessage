@@ -1,0 +1,59 @@
+﻿@model CA1SendSMSMessage.Models.SMSMessage
+
+@{
+    ViewBag.Title = "Error";
+}
+
+
+
+<br>
+<br>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-title">Failed to send message: Contact not found</h1>
+    </div>
+
+    <div class="panel-body">
+
+        <table id="FailedToSendTable" border="1" cellpadding="10" cellspacing="10">
+
+
+
+            <tr>
+                @* Using the model, it obtains its name and then  assigns the value passed to the Area Code *@
+                <td>
+                    @Html.DisplayNameFor(m => m.AreaCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.AreaCode)
+                </td>
+            </tr>
+            <tr>
+                @* Using the model, it obtains its name and then  assigns the value passed to the Phone Number *@
+                <td>
+                    @Html.DisplayNameFor(m => m.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.PhoneNumber)
+                </td>
+            </tr>
+            <tr>
+                @* Using the model, it obtains its name and then  assigns the value passed to the Text Content *@
+                <td>
+                    @Html.DisplayNameFor(m => m.TextContent)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.TextContent)
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+
+<br>
+
+@* button back to the SMSMessage Index *@
+@Html.ActionLink("Back", "Index", "SMSMessage")
